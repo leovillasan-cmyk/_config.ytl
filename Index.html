@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do you love me?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: pink;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+    h1 {
+      color: red;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    #yes {
+      background-color: lightgreen;
+    }
+    #no {
+      background-color: lightcoral;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <h1>Do you love me? 🥺</h1>
+  <div>
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+
+    // Moves "No" button randomly on both mobile and PC
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    }
+
+    // Listen to multiple events so it keeps moving forever
+    ["mouseover", "click", "touchstart", "touchmove"].forEach(evt => {
+      noBtn.addEventListener(evt, moveButton);
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = "<h1 style='color:red;'>I love you more! 😍🥰</h1>";
+    });
+  </script>
+</body>
+</html>
